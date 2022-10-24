@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FormulirRelative</string>
+    <string name="app_name">Formulir Relative</string>
     <string-array name="arr_prodi">
         <item>Informatika</item>
         <item>Manajemen</item>

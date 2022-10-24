@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
         etnpm = findViewById(R.id.et_npm);
         etnama = findViewById(R.id.et_nama);
         rgjk = findViewById(R.id.rg_jk);
-        spprodi= findViewById(R.id.sp_prodi);
+        spprodi = findViewById(R.id.sp_prodi);
         btndaftar = findViewById(R.id.btn_daftar);
 
         btndaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String npm,nama,jk,prodi;
+                String npm, nama, jk, prodi;
                 int selectedID;
 
                 npm = etnpm.getText().toString();
@@ -44,27 +44,35 @@ public class MainActivity extends AppCompatActivity {
                 rbjk = findViewById(selectedID);
                 jk = rbjk.getText().toString();
 
-                if(npm.trim().equals(""))
-                {
+                if (npm.trim().equals("")) {
                     etnpm.setError("NPM TIDAK BOLEH KOSONG");
                     return;
                 }
-                if(nama.trim().equals(""))
-                {
+                if (nama.trim().equals("")) {
                     etnama.setError("NAMA TIDAK BOLEH KOSONG");
                     return;
                 }
 
                 Intent intent = new Intent
-                        (MainActivity.this,ResultActivity.class);
-                intent.putExtra("varNPM",npm);
-                intent.putExtra("varNama",nama);
-                intent.putExtra("varJK",jk);
-                intent.putExtra("varProdi",prodi);
+                        (MainActivity.this, ResultActivity.class);
+                intent.putExtra("varNPM", npm);
+                intent.putExtra("varNama", nama);
+                intent.putExtra("varJK", jk);
+                intent.putExtra("varProdi", prodi);
                 startActivity(intent);
 
             }
         });
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        etnama.setText("");
+        etnpm.setText("");
+        rgjk.check(R.id.rb_laki);
+        spprodi.setSelection(0);
+    }
+
 }
